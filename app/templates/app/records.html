@@ -1,0 +1,66 @@
+{% extends 'app/base.html' %}
+
+{% block content%}
+<br>
+<!-- {% if messages %}
+{% for message in messages %}
+<div class="container-fluid">
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" role="alert">
+
+        <div class="container alert alert-{{ message.tags }}">
+            {{message}}
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+    </div>
+
+    
+</div>
+{% endfor %}
+{% endif %} -->
+<div class="container-fluid">
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Sr.No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Class/School</th>
+                <th scope="col">Address</th>
+                <th scope="col">Tutor's Name</th>
+                <th scope="col">Subjects</th>
+                <th scope="col">Starting Date</th>
+                <th scope="col">Due Date</th>
+                <th scope="col">Fee</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Details</th>
+
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+
+            {% if records%}
+            {% for record in records %}
+            <tr>
+                <td>{{ record.sr_no }}</td>
+                <td>{{ record.name }}</td>
+                <td>{{ record.phone }}</td>
+                <td>{{ record.class_or_school}}</td>
+                <td>{{ record.address}}</td>
+                <td>{{ record.tutor_name }}</td>
+                <td>{{ record.subjects }}</td>
+                <td>{{ record.starting_date }}</td>
+                <td>{{ record.completion_date }}</td>
+                <td>{{ record.fee }}</td>
+                <td>{{ record.duration }}</td>
+                <td><a href="{% url 'edit_record' record.id %}" class="btn btn-secondary btn-sm">Edit</a></td>
+                <td><a href="{% url 'details' record.id %}" class="btn btn-success btn-sm">View Details</a></td>
+            </tr>
+            {% endfor %}
+            {% endif%}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

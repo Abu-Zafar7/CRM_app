@@ -1,0 +1,33 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <a href="{% url 'records' %}" class="btn btn-dark my-3">Go Back</a>
+            <div class="card card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token%}
+                  
+
+                      {{ form.as_p }}
+                  
+                    
+                
+                      <div class="d-grid gap-2 col-12">
+                        <button class="btn btn-dark" type="submit">Save</button>
+                        <a href="{% url 'delete_record' record.id %}"  class="btn btn-danger">Delete</a>
+                        
+                      </div>
+                    
+                    
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

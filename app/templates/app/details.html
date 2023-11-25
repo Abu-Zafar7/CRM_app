@@ -1,0 +1,64 @@
+{% extends 'app/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+        <br><br>
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="{% url 'add_details' student.id %}" class="btn btn-dark mb-2">Add Details</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{% url 'records' %}" class="btn btn-dark mb-2">Go Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Starting Date</th>
+                        <th scope="col">Due Date</th>
+                        <th scope="col">Fee Received</th>
+                        <th scope="col">Fee</th>
+                        <th scope="col">Received Date</th>
+                        <th scope="col">Mode of Payment</th>
+                        <th scope="col">Receipt ID</th>
+                        <th scope="col">Tutor Paid</th>
+                        <th scope="col">Tutor Fee</th>
+                        <th scope="col">Date of Payment</th>
+                    </tr>
+                </thead>
+
+
+            {% if details %}
+                <!-- Display detail information -->
+                
+                    <tbody class="table-group-divider">
+
+                        {% for detail in details %}
+                    
+                        <tr>
+                            <td>{{ detail.start_date  }}</td>
+                            <td>{{ detail.due_date  }}</td>
+                            <td>{{ detail.fee_received  }}</td>
+                            <td>{{ detail.fee  }}</td>
+                            <td>{{ detail.received_date  }}</td>
+                            <td>{{ detail.mode_of_payment  }}</td>
+                            <td>{{ detail.receipt  }}</td>
+                            <td>{{ detail.tutor_paid  }}</td>
+                            <td>{{ detail.tutor_fee  }}</td>
+                            <td>{{ detail.date_of_payment  }}</td>
+                            
+                            <!-- <td><a href="#" class="btn btn-secondary btn-sm">Edit</a></td>
+                            <td><a href="#" class="btn btn-danger btn-sm">Delete</a></td>  -->
+                        </tr>
+                        {% endfor %}
+                    
+                    </tbody>
+                </table>
+                
+            {% endif %}
+        </div>
+{% endblock content %}
